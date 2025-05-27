@@ -391,7 +391,7 @@
             };
 
             try {
-                const response = await fetch('http://localhost:3000/api/employee/check-bonus', {
+                const response = await fetch('http://54.166.206.245:3026/api/employee/check-bonus', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -467,7 +467,7 @@
         }
 
         function downloadBonus(bonusId) {
-            window.location.href = `http://localhost:3000/api/bonus/pdf/${bonusId}`;
+            window.location.href = `http://54.166.206.245:3026/api/bonus/pdf/${bonusId}`;
         }
 
         function escapeHtml(str) {

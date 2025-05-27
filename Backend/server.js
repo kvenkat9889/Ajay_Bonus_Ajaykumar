@@ -14,10 +14,10 @@ app.use(express.static('public'));
 
 // PostgreSQL connection pool
 const pool = new Pool({
-  host: 'localhost',
+  host: 'postgres',
   port: 5432,
   user: 'postgres',
-  password: 'Password@12345',
+  password: 'admin123',
   database: 'new_employee_db',
   max: 10,
   idleTimeoutMillis: 30000
@@ -27,11 +27,11 @@ const pool = new Pool({
 async function initializeDatabase() {
   try {
     const tempPool = new Pool({
-      host: 'localhost',
+      host: 'postgres',
       port: 5432,
       user: 'postgres',
-      password: 'Password@12345',
-      database: 'postgres'
+      password: 'admin123',
+      database: 'new_employee_db'
     });
     const client = await tempPool.connect();
     await client.query('CREATE DATABASE new_employee_db');
@@ -261,8 +261,8 @@ app.get('/api/bonus/pdf/:id', async (req, res) => {
 
 // Start server
 initializeDatabase().then(() => {
-  app.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
+  app.listen(3026, () => {
+    console.log('Server running on http://54.166.206.245:3026');
   });
 }).catch(err => {
   console.error('Failed to start server:', err.message);
