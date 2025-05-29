@@ -31,7 +31,7 @@ async function initializeDatabase() {
       port: 5432,
       user: 'postgres',
       password: 'admin123',
-      database: 'new_employee_db'
+      database: 'postgres'
     });
     const client = await tempPool.connect();
     await client.query('CREATE DATABASE new_employee_db');
@@ -261,7 +261,7 @@ app.get('/api/bonus/pdf/:id', async (req, res) => {
 
 // Start server
 initializeDatabase().then(() => {
-  app.listen(3026, () => {
+  app.listen(3000, () => {
     console.log('Server running on http://54.166.206.245:3026');
   });
 }).catch(err => {
