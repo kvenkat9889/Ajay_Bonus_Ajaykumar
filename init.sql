@@ -1,23 +1,11 @@
-CREATE TABLE bonus (
-        id SERIAL PRIMARY KEY,
-        employeeId VARCHAR(7) NOT NULL CHECK (employeeId ~ '^ATS0[0-9]{3}$'),
-        name VARCHAR(100) NOT NULL,
-        email VARCHAR(50) NOT NULL,
-        password VARCHAR(255) NOT NULL,
-        bonusAmount NUMERIC NOT NULL CHECK (bonusAmount >= 1000 AND bonusAmount <= 100000),
-        month VARCHAR(7) NOT NULL CHECK (month ~ '^[0-9]{4}-[0-9]{2}$'),
-        reason VARCHAR(500) NOT NULL,
-        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE IF NOT EXISTS bonuses (
+        bonus_id VARCHAR(10) PRIMARY KEY,
+        employee_id VARCHAR(7) NOT NULL,
+        employee_name VARCHAR(40) NOT NULL,
+        employee_email VARCHAR(40) NOT NULL,
+        bonus_type VARCHAR(20) NOT NULL CHECK (bonus_type IN ('Performance', 'Festival', 'Project Completion', 'Retention', 'Referral')),
+        amount DECIMAL(10, 2) NOT NULL,
+        month_year VARCHAR(20) NOT NULL,
+        reason VARCHAR(200),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
-
-      CREATE TABLE bonus (
-            id SERIAL PRIMARY KEY,
-            employeeId VARCHAR(7) NOT NULL CHECK (employeeId ~ '^ATS0[0-9]{3}$'),
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(50) NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            bonusAmount NUMERIC NOT NULL CHECK (bonusAmount >= 1000 AND bonusAmount <= 100000),
-            month VARCHAR(7) NOT NULL CHECK (month ~ '^[0-9]{4}-[0-9]{2}$'),
-            reason VARCHAR(500) NOT NULL,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-          );
